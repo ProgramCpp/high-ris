@@ -1,4 +1,4 @@
-employee_feedback/node/modules
+employee_feedback/node_modules/
 employee_feedbackconfig/db.js
-hr_feedbackReport/node/modules
-hr_feedbackReport/db.js
+hr_feedbackReport/node_modules/
+hr_feedbackReport/config/db.js

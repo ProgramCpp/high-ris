@@ -1,0 +1,20 @@
+{
+  "name": "hr_feedbackreport",
+  "version": "1.0.0",
+  "description": "maintain employee feedback",
+  "main": "server.js",
+  "scripts": {
+  	"dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
