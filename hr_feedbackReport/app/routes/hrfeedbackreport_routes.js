@@ -1,7 +1,5 @@
 //routes/empfeedback_routes.js
 
-var ObjectID = require('mongodb').ObjectID;
-
 const httpStatus = require('../http_errorcodes');
 
 module.exports = function() {
@@ -47,7 +45,7 @@ module.exports = function() {
       getFeedbackAsync = getFeedback(db, req.body.feedback);
 
       Promise.all([getRatingAsync, getFeedbackAsync]).then((result) => {
-        
+
         var ratingResponse = { rating : {}};
         result[0].forEach((item, index) => {
           ratingResponse.rating[item.what_rating] = item.rating;
