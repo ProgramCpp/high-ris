@@ -1,7 +1,8 @@
 //routes/empfeedback_routes.js
 
-var bcrypt = require('bcrypt');
-const httpStatus = require('../http_errorcodes');
+const bcrypt = require('bcrypt');
+const httpStatus = require('../../../lib/http_errorcodes');
+const saltConfig = require('../../config/saltconfig');
 
 module.exports = function() {
 
@@ -34,9 +35,7 @@ module.exports = function() {
 
     app.post('/addemp', (req, res) => {
 
-      const saltRounds = 10;
-
-      bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+      bcrypt.hash(req.body.password, saltConfig.SALTROUNDS, function(err, hash) {
         postUser(db, req.body.user, hash).then((result) => {
           res.send(httpStatus.e200);
         }, () => {

@@ -2,8 +2,12 @@ const express        = require('express');
 const MongoClient    = require('mongodb').MongoClient;
 const https          = require('https');
 const fs             = require('fs');
+const bcrypt         = require('bcrypt');
 const bodyParser     = require('body-parser');
 const db             = require('./config/db');
+const httpStatus     = require('../lib/http_errorcodes');
+var   cs             = require('cansecurity');
+var   initcs         = require('../lib/initcansecurity');
 const app            = express();
 
 const port = 443;
@@ -24,7 +28,12 @@ MongoClient.connect(db.url,
   },
 	(err, database) => {
   		if (err) return console.log(err.name + ':' + err.message);
+      var cansec = initcs.init(cs, database, bcrypt);
+      app.use(cansec.validate);
   		require('./app/routes')(app, database);
+      app.use((req, res) => {
+        res.send(httpStatus.e404);
+      });
   		https.createServer(options, app).listen(port, () => {
     	console.log('We are live on ' + port);
   });
