@@ -30,6 +30,7 @@ MongoClient.connect(db.url,
   		if (err) return console.log(err.name + ':' + err.message);
       var cansec = initcs.init(cs, database, bcrypt);
       app.use(cansec.validate);
+      app.use(cansec.authorizer("./config/cansecurity_auth.js"));
   		require('./app/routes')(app, database);
       app.use((req, res) => {
         res.send(httpStatus.e404);
