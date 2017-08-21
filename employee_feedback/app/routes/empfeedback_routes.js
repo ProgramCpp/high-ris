@@ -6,10 +6,11 @@ module.exports = function() {
 
   var mongoHandler = (err, result, resolve, reject) => {
     if (err) {
-      reject();
+      console.log(err);
+      reject(err);
     } else {
       // log result
-      resolve();
+      resolve(result);
     }
   }
 
@@ -57,9 +58,9 @@ module.exports = function() {
       // There is no restriction on the number of feedbacks employees can give.
       // If needed, Implement transactions to commit all-or-none.
       //    record employee interaction to do away with multiple feedbacks.
-      Promise.all([postRatingAsync, postFeedbackAsync]).then(() => {
+      Promise.all([postRatingAsync, postFeedbackAsync]).then((result) => {
         res.send(httpStatus.e200);
-      }, () => {
+      }, (err) => {
         res.send(httpStatus.e500);
       }); 
 
