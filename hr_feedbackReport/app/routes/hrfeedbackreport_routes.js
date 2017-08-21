@@ -57,8 +57,10 @@ module.exports = function() {
         });
         
         var response = Object.assign({}, httpStatus.e200, ratingResponse, feedbackResponse);
+        res.status(httpStatus.e200.statuscode);
         res.send(response);
       }, () => {
+        res.status(httpStatus.e500.statuscode);
         res.send(httpStatus.e500);
       }); 
 

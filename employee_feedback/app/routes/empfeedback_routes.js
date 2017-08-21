@@ -59,8 +59,10 @@ module.exports = function() {
       // If needed, Implement transactions to commit all-or-none.
       //    record employee interaction to do away with multiple feedbacks.
       Promise.all([postRatingAsync, postFeedbackAsync]).then((result) => {
+        res.status(httpStatus.e200.statuscode);
         res.send(httpStatus.e200);
       }, (err) => {
+        res.status(httpStatus.e500.statuscode);
         res.send(httpStatus.e500);
       }); 
 

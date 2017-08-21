@@ -36,14 +36,17 @@ module.exports = function() {
     app.post('/addemp', (req, res) => {
 
       if(!req.body.hasOwnProperty('password') || !req.body.hasOwnProperty('user')) {
+        res.status(httpStatus.e400.statuscode);
         res.send(httpStatus.e400);
       }
       //[TODO] check if user already present
       else {
         bcrypt.hash(req.body.password, saltConfig.SALTROUNDS, function(err, hash) {
           postUser(db, req.body.user, hash).then((result) => {
+            res.status(httpStatus.e200.statuscode);
             res.send(httpStatus.e200);
           }, () => {
+            res.status(httpStatus.e500.statuscode);
             res.send(httpStatus.e500);
           }); 
         });
