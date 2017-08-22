@@ -1,5 +1,5 @@
-# High-RIS
+# High-RIS (Tech Diva Android Hackathon)
 
 HRIS for the modern IT :P
 
-POC application for automating employee feedback.
+POC solution for employee feedback.
