@@ -1,6 +1,6 @@
 //routes/empfeedback_routes.js
 
-const httpStatus = require('../../../lib/http_errorcodes');
+const httpStatus = require('../../../lib/httperrorcodes');
 
 module.exports = function() {
 

@@ -3,3 +3,9 @@ employee_feedback/config/db.js
 hr_feedbackReport/node_modules/
 hr_feedbackReport/config/db.js
 hr_feedbackReport/config/saltconfig.js
+clients/employee/mywork/hooks
+clients/employee/mywork/platforms
+clients/employee/mywork/plugins
+clients/HR/mywork/hooks
+clients/HR/mywork/platforms
+clients/HR/mywork/plugins

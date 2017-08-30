@@ -1,7 +1,7 @@
 //routes/empfeedback_routes.js
 
 const bcrypt = require('bcrypt');
-const httpStatus = require('../../../lib/http_errorcodes');
+const httpStatus = require('../../../lib/httperrorcodes');
 const saltConfig = require('../../config/saltconfig');
 
 module.exports = function() {
@@ -33,7 +33,7 @@ module.exports = function() {
 
   return function (app, db)  {
 
-    app.post('/addemp', (req, res) => {
+    app.post('/emp', (req, res) => {
 
       if(!req.body.hasOwnProperty('password') || !req.body.hasOwnProperty('user')) {
         res.status(httpStatus.e400.statuscode);

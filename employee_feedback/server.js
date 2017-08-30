@@ -5,12 +5,12 @@ const fs             = require('fs');
 const bcrypt         = require('bcrypt');
 const bodyParser     = require('body-parser');
 const db             = require('./config/db');
-const httpStatus     = require('../lib/http_errorcodes');
+const httpStatus     = require('../lib/httperrorcodes');
 var   cs             = require('cansecurity');
 var   initcs         = require('../lib/initcansecurity');
 const app            = express();
 
-const port = 443;
+const port = 3004;
 
 var options = {
   key: fs.readFileSync('../../Vault/key.pem'),
@@ -32,6 +32,8 @@ MongoClient.connect(db.url,
       app.use(cansec.validate);
       app.use(cansec.authorizer("./config/cansecurity_auth.js"));
       require('./app/routes')(app, database);
+      app.use('/app', express.static('./app/views'))
+      app.use(express.static('../lib/views'))
       app.use((req, res) => {
         res.send(httpStatus.e404);
       });

@@ -1,6 +1,6 @@
 //routes/empfeedback_routes.js
 
-const httpStatus = require('../../../lib/http_errorcodes');
+const httpStatus = require('../../../lib/httperrorcodes');
 
 module.exports = function() {
 
@@ -42,15 +42,17 @@ module.exports = function() {
 
     app.post('/feedback', (req, res) => {
       var postRatingAsync, postFeedbackAsync;
-
+      console.log(req.body);
       if(req.body.hasOwnProperty('rating') && 
           req.body.rating >= 1 && 
           req.body.rating <= 10) {
+          console.log(req.body.rating);
           postRatingAsync = postRating(db, req.body.rating);
 
         }
 
       if( req.body.hasOwnProperty('feedback')) {
+        console.log(req.body.feedback);
         postFeedbackAsync = postFeedback(db, req.body.feedback);
       }
 
