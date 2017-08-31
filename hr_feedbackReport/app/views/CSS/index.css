@@ -1,3 +1,29 @@
+#home {
+	text-align: center;
+}
+
+#status {
+	text-align: center;
+}
+
+#addemp {
+	text-align: center;
+	margin: 40px;
+}
+
+#viewfeedback {
+	margin: 20px;
+}
+
+#viewfeedback ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+#viewfeedback ul li {
+	border: 1px #DCDCDC solid;
+}
+
 #myChart {
   max-width: 300px;
   max-height:300px;

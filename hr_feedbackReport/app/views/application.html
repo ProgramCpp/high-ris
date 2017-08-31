@@ -36,17 +36,56 @@
         <title>My Work</title>
     </head>
     <body>
-        <div id="app">
-            <!-- https://jsfiddle.net/r0uzen3z/-->
-            <!-- https://jsfiddle.net/mrfef7e2/ -->
-            <button type="button" id ="addemployee"</button>
-            <canvas id="myChart"></canvas>
-            <ul></ul>
-            
-            
+        <div id="app" ng-app="mainApp">
+            <div ng-view></div>
+            <script type="text/ng-template" id="home.html">
+                <div class="container" id = "home">
+                    <br/>
+                    <br/>
+                    <a href="#/addEmployees" class= "button">
+                        <button type="button">add employee</button>
+                    </a>
+                    <a href="#/viewFeedback" class= "button">
+                        <button type="button">view feedback</button>
+                    </a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <canvas id="myChart" style="display: inline"></canvas>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="addEmployees.html">
+                <div class="container" id = "addemp">
+                <p> EMPLOYEE FORM </p>
+                <br/>
+                <form ng-submit="addEmployee()">
+                    <input type="text" ng-model="name" required class="form-control" placeholder="user name"> 
+                    <br/><br/>
+                    <input type="password" ng-model="password" required class="form-control" placeholder="password">
+                    <br/><br/>
+                    <button type="submit">add employee</button>
+                </form>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="viewFeedback.html">
+                <div class="container" id = "viewfeedback">
+                <p> FEEDBACK </p>
+                <br/>
+                    <ul>
+                        <li ng-repeat=" fb in feedback">
+                            {{ fb }}
+                        </li>
+                    </ul>
+                </div>
+            </script>
+            <div id="status"></div>       
         </div>
 
         <!--script type="text/javascript" src="cordova.js"></script-->
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/angular-route.min.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/Chart.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>

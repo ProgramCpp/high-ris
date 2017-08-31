@@ -6,6 +6,9 @@ hr_feedbackReport/config/saltconfig.js
 clients/employee/mywork/hooks
 clients/employee/mywork/platforms
 clients/employee/mywork/plugins
+clients/employee/mywork/node_modules
 clients/HR/mywork/hooks
 clients/HR/mywork/platforms
 clients/HR/mywork/plugins
+clients/HR/mywork/node_modules
+clients/employee/mywork/google-services.json

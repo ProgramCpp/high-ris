@@ -27,10 +27,10 @@ MongoClient.connect(db.url,
         reconnectInterval: 1000 
   },
 	(err, database) => {
-  		//if (err) return console.log(err.name + ':' + err.message);
+  		if (err) return console.log(err.name + ':' + err.message);
       var cansec = initcs.init(cs, database, bcrypt);
-      //app.use(cansec.validate);
-      //app.use(cansec.authorizer("./config/cansecurity_auth.js"));
+      app.use(cansec.validate);
+      app.use(cansec.authorizer("./config/cansecurity_auth.js"));
   		require('./app/routes')(app, database);
       app.use('/app', express.static('./app/views'))
       app.use(express.static('../lib/views'))
